@@ -15,8 +15,8 @@ jobs:
         curl -L https://github.com/sickcodes/github-actions-archlinux/raw/master/install.sh | sh
     - name: Build nushell from source
       run: |
-        sudo pacman -Syu
-        sudo pacman -S git rustup python
+        sudo pacman -Syu --noconfirm
+        sudo pacman -S git rustup python --noconfirm
         rustup install nightly
         rustup default nightly
         git clone https://aur.archlinux.org/nushell-git.git
