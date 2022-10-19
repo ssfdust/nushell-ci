@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu
+    steps:
+    - uses: actions/checkout@v1 
+    - name: Install Archlinux
+      run: curl -L https://github.com/sickcodes/github-actions-archlinux/raw/master/install.sh | sh
+    - name: Build nushell from source
+      run: |
+        sudo pacman -Syu
+        sudo pacman -S git rustup python
+        rustup install nightly
+        rustup default nightly
+        git clone https://aur.archlinux.org/nushell-git.git
+        cd nushell-git
+        makepkg
