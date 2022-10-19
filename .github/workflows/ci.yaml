@@ -15,7 +15,7 @@ jobs:
         curl -L https://github.com/sickcodes/github-actions-archlinux/raw/master/install.sh | sh
     - name: Build nushell from source
       run: |
-        pacman -Sy archlinux-keyring && pacman -Su
+        sudo pacman -Sy archlinux-keyring && sudo pacman -Su
         sudo pacman -Syu --noconfirm
         sudo pacman -S git rustup python --noconfirm
         rustup install nightly
